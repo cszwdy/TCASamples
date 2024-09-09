@@ -1,0 +1,30 @@
+# Xcode
+#
+# 忽略 Xcode 生成的用户特定文件
+xcuserdata/
+
+# 忽略 Xcode 构建目录
+DerivedData/
+
+# 忽略 Swift 包管理工具生成的文件
+.build/
+Package.pins
+Package.resolved
+
+# 忽略 CocoaPods 生成的 Pods 目录（可选）
+# Pods/
+
+# 忽略 Carthage 生成的 Checkouts 和 Build 目录（可选）
+# Carthage/Checkouts
+# Carthage/Build
+
+# 忽略 Fastlane 生成的截图和报告文件（可选）
+# fastlane/report.xml
+# fastlane/Preview.html
+# fastlane/screenshots
+
+# 忽略其他临时文件和目录
+*.swp
+*.lock
+*.xcuserstate
+.DS_Store
