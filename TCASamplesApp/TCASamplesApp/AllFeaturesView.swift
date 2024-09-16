@@ -19,7 +19,6 @@ struct AppView: View {
         Text(store.numberFact ?? "Empty")
         Button("Counter") {
             // 这里怎么写
-            
             store.send(.counterButtonTapped)
         }
         .sheet(item: $store.scope(state: \.counter, action: \.counter)) { astore in
@@ -56,7 +55,7 @@ struct AppFeature {
         Reduce { state, action in
             switch action {
             case .counterButtonTapped:
-                state.counter = CounterFeature.State()
+                state.counter = CounterFeature.State(count: state.count)
                 return .none
             case .counter(.presented(.incrementButtonTapped)):
                 state.count = state.counter?.count ?? 999
