@@ -10,14 +10,10 @@ import ComposableArchitecture
 
 
 @Reducer
-struct Feature {
+struct CounterFeature {
     @ObservableState
     struct State: Equatable {
-        var count: Int = 0
-        var name: String = ""
-        var age: Int = 1
-        var married = false
-        var cool = true
+        var count = 0
         var numberFact: String?
     }
     enum Action {
@@ -34,17 +30,9 @@ struct Feature {
                 
             case .decrementButtonTapped:
                 state.count -= 1
-                state.name = "-"
-                state.age -= 1
-                state.married = false
-                state.cool = false
                 return .none
             case .incrementButtonTapped:
                 state.count += 1
-                state.name = "+"
-                state.age += 1
-                state.married = true
-                state.cool = true
                 return .none
             case .numberFactButtonTapped:
                 return .run {[count = state.count] send in
@@ -70,6 +58,7 @@ extension NumberFactClient: DependencyKey {
             return String(decoding: data, as: UTF8.self)
         }
     }
+    
     
     static var testValue: NumberFactClient {
         Self { number in

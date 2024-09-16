@@ -17,11 +17,15 @@ struct TCASamplesAppApp: App {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
-            FeatureView(
-                store: Store(initialState: Feature.State()) {
-                    Feature()
-                }
-            )
+            AppView(store: Store(initialState: AppFeature.State(), reducer: {
+                AppFeature()
+            }))
+            
+//            CounterFeatureView(
+//                store: Store(initialState: CounterFeature.State()) {
+//                    CounterFeature()
+//                }
+//            )
         }
     }
 }

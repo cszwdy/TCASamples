@@ -8,14 +8,16 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct FeatureView: View {
-    let store: StoreOf<Feature>
+struct CounterFeatureView: View {
+    var store: StoreOf<CounterFeature>
     
     var body: some View {
         Form {
             Section {
                 Text("\(store.count)")
-                Button(" - ") {store.send(.decrementButtonTapped)}
+                Button(" - ") {
+                    store.send(.decrementButtonTapped)
+                }
                 Button(" + ") {store.send(.incrementButtonTapped)}
             }
             
@@ -31,8 +33,8 @@ struct FeatureView: View {
 }
 
 #Preview {
-    FeatureView(
-        store: Store(initialState: Feature.State()) {Feature()}
+    CounterFeatureView(
+        store: Store(initialState: CounterFeature.State()) {CounterFeature()}
     )
 }
 
