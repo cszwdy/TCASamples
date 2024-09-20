@@ -13,7 +13,7 @@ import ComposableArchitecture
 struct CounterFeature {
     @ObservableState
     struct State {
-        @Shared var name: String
+        @Shared(.appStorage("Name")) var name = "Good Morning"
         var count = 0
         var numberFact: String?
     }

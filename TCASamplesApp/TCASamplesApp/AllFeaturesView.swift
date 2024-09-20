@@ -29,7 +29,7 @@ struct AppView: View {
 }
 
 #Preview {
-    AppView(store: Store(initialState: AppFeature.State( name: Shared("Hello world")), reducer: {
+    AppView(store: Store(initialState: AppFeature.State(), reducer: {
         AppFeature()
     }))
 }
@@ -42,7 +42,7 @@ struct AppFeature {
     @ObservableState
     struct State {
         @Presents var counter: CounterFeature.State?
-        @Shared var name: String
+        @Shared(.appStorage("Name")) var name = "Emiaostein"
         var count = 0
         var numberFact: String?
     }
@@ -56,7 +56,7 @@ struct AppFeature {
         Reduce { state, action in
             switch action {
             case .counterButtonTapped:
-                state.counter = CounterFeature.State(name: state.$name, count: state.count)
+                state.counter = CounterFeature.State(count: state.count)
                 return .none
             case .counter(.presented(.incrementButtonTapped)):
                 state.count = state.counter?.count ?? 999

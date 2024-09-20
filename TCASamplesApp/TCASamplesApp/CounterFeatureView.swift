@@ -28,13 +28,14 @@ struct CounterFeatureView: View {
             if let fact = store.numberFact {
                 Text(fact)
             }
+            Text(store.name)
         }
     }
 }
 
 #Preview {
     CounterFeatureView(
-        store: Store(initialState: CounterFeature.State(name: Shared("Emiaostein"))) {CounterFeature()}
+        store: Store(initialState: CounterFeature.State()) {CounterFeature()}
     )
 }
 
