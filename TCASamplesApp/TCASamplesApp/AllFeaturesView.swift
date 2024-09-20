@@ -44,7 +44,7 @@ struct AppFeature {
         @Presents var counter: CounterFeature.State?
         @Shared(.appStorage("Name")) var name = "Emiaostein"
         var count = 0
-        var numberFact: String?
+        var numberFact = ""
     }
     
     enum Action {

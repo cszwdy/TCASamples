@@ -12,10 +12,10 @@ import ComposableArchitecture
 @Reducer
 struct CounterFeature {
     @ObservableState
-    struct State {
+    struct State: Equatable {
         @Shared(.appStorage("Name")) var name = "Good Morning"
         var count = 0
-        var numberFact: String?
+        var numberFact = ""
     }
     enum Action {
         case decrementButtonTapped

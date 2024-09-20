@@ -25,8 +25,8 @@ struct CounterFeatureView: View {
                 Button("Number fact") {store.send(.numberFactButtonTapped)}
             }
             
-            if let fact = store.numberFact {
-                Text(fact)
+            if !store.numberFact.isEmpty  {
+                Text(store.numberFact)
             }
             Text(store.name)
         }
