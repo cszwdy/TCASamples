@@ -17,7 +17,7 @@ struct TCASamplesAppApp: App {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
-            AppView(store: Store(initialState: AppFeature.State(), reducer: {
+            AppView(store: Store(initialState: AppFeature.State(name: Shared("App")), reducer: {
                 AppFeature()
             }))
             

@@ -34,7 +34,7 @@ struct CounterFeatureView: View {
 
 #Preview {
     CounterFeatureView(
-        store: Store(initialState: CounterFeature.State()) {CounterFeature()}
+        store: Store(initialState: CounterFeature.State(name: Shared("Emiaostein"))) {CounterFeature()}
     )
 }
 

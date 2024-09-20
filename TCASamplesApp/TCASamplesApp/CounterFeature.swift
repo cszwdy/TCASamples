@@ -12,7 +12,8 @@ import ComposableArchitecture
 @Reducer
 struct CounterFeature {
     @ObservableState
-    struct State: Equatable {
+    struct State {
+        @Shared var name: String
         var count = 0
         var numberFact: String?
     }
@@ -41,6 +42,7 @@ struct CounterFeature {
                 }
             case let .numberFactResponse(fact):
                 state.numberFact = fact
+                state.name = fact
                 return .none
             }
         }

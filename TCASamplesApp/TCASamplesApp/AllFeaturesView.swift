@@ -12,11 +12,11 @@ import ComposableArchitecture
 
 struct AppView: View {
     @State var store: StoreOf<AppFeature>
-    
     var body: some View {
         Text("\(store.counter?.count ?? 123)")
         Text("\(store.count)")
         Text(store.numberFact ?? "Empty")
+        Text(store.name)
         Button("Counter") {
             // 这里怎么写
             store.send(.counterButtonTapped)
@@ -29,7 +29,7 @@ struct AppView: View {
 }
 
 #Preview {
-    AppView(store: Store(initialState: AppFeature.State(), reducer: {
+    AppView(store: Store(initialState: AppFeature.State( name: Shared("Hello world")), reducer: {
         AppFeature()
     }))
 }
@@ -40,8 +40,9 @@ struct AppView: View {
 struct AppFeature {
     
     @ObservableState
-    struct State: Equatable {
+    struct State {
         @Presents var counter: CounterFeature.State?
+        @Shared var name: String
         var count = 0
         var numberFact: String?
     }
@@ -55,7 +56,7 @@ struct AppFeature {
         Reduce { state, action in
             switch action {
             case .counterButtonTapped:
-                state.counter = CounterFeature.State(count: state.count)
+                state.counter = CounterFeature.State(name: state.$name, count: state.count)
                 return .none
             case .counter(.presented(.incrementButtonTapped)):
                 state.count = state.counter?.count ?? 999
